@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kar Hesaplayıcı</title>
+</head>
+<body>
+    <h1>Basit Kar Hesaplayıcı</h1>
+    <input type="number" id="maliyet" placeholder="Maliyet">
+    <input type="number" id="satis" placeholder="Satış Fiyatı">
+    <button onclick="hesapla()">Hesapla</button>
+    <p id="sonuc"></p>
+    <script>
+        function hesapla() {
+            let m = document.getElementById('maliyet').value;
+            let s = document.getElementById('satis').value;
+            document.getElementById('sonuc').innerText = "Kazanç: " + (s - m) + " TL";
+        }
+    </script>
+</body>
+</html>
