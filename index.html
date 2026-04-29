@@ -1,24 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <title>Kar Hesaplayıcı</title>
+    <meta charset="UTF-8">
+    <title>Profesyonel Kar Hesaplayıcı</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background-color: #f4f4f4; }
+        .container { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: inline-block; }
+        input { padding: 10px; margin: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        button { padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        #sonuc { font-weight: bold; margin-top: 20px; color: #333; }
+        .ads { margin-top: 30px; color: #777; font-size: 12px; border: 1px dashed #ccc; padding: 10px; }
+    </style>
 </head>
 <body>
-    <h1>Basit Kar Hesaplayıcı</h1>
-    <input type="number" id="maliyet" placeholder="Maliyet">
-    <input type="number" id="satis" placeholder="Satış Fiyatı">
-    <button onclick="hesapla()">Hesapla</button>
-    <p id="sonuc"></p>
-    <script>
-        function hesapla() {
-            let m = document.getElementById('maliyet').value;
-            let s = document.getElementById('satis').value;
-            document.getElementById('sonuc').innerText = "Kazanç: " + (s - m) + " TL";
+
+<div class="container">
+    <h1>Kar Hesaplama Aracı</h1>
+    <p>Maliyet ve satış bedelini girerek net kazancınızı görün.</p>
+    
+    <input type="number" id="maliyet" placeholder="Maliyet (TL)">
+    <input type="number" id="satis" placeholder="Satış Fiyatı (TL)">
+    <br>
+    <button onclick="hesapla()">Hesabı Çıkart</button>
+    
+    <p id="sonuc">Sonuç burada görünecek.</p>
+
+    <div class="ads">
+        <p>Sponsorlu Bağlantı / Reklam Alanı</p>
+    </div>
+</div>
+
+<div style="margin-top: 30px; max-width: 500px; margin-left: auto; margin-right: auto; text-align: left;">
+    <h3>Kar Marjı Nedir?</h3>
+    <p>Ticari faaliyetlerde elde edilen gelirden maliyet düşüldüğünde kalan kısım kardır. Bu araç, hızlıca hesap yapmanıza yardımcı olur.</p>
+</div>
+
+<script>
+    function hesapla() {
+        let m = parseFloat(document.getElementById('maliyet').value);
+        let s = parseFloat(document.getElementById('satis').value);
+        
+        if(isNaN(m) || isNaN(s)) {
+            document.getElementById('sonuc').innerText = "Lütfen geçerli sayılar girin!";
+        } else {
+            let fark = s - m;
+            document.getElementById('sonuc').innerText = "Net Kazancınız: " + fark.toFixed(2) + " TL";
         }
-    </script>
-    <hr>
-<h3>Kar Marjı Nasıl Hesaplanır?</h3>
-<p>Kar miktarını bulmak için satış fiyatından maliyeti çıkarırız. 
-Sitemiz bu işlemi sizin için saniyeler içinde yapar.</p>
+    }
+</script>
+
 </body>
 </html>
